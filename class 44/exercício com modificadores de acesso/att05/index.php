@@ -8,14 +8,17 @@
 <body>
     <?php 
     class ContaCorrente {
-    private $numeroConta;
+    public $numeroConta;
     private $saldo;
 
-    public function __construct($numeroDaConta, $saldo) {
-        $this->numeroConta = $numeroDaConta;
-        $this->saldo = $saldo;
-
+    public function setnumeroConta($numeroConta) {
+        $this->numeroConta = $numeroConta;
     }
+
+    private function setsaldo($saldo) {
+        $this->numeroConta = $saldo;
+    }
+
     public function getNumeroConta() {
         return $this->numeroConta;
     }
@@ -24,7 +27,20 @@
         return $this->saldo;
     }
 
+    public function depositar($valor) {
+        $this->saldo += $valor;
+    }
+
+
 }
-    ?>
+
+    $conta = new ContaCorrente();
+    $conta->setnumeroConta(12345);
+    //$conta->setsaldo(1000);
+    $conta->depositar(500);
+    
+    echo "Número da conta: " . $conta->getNumeroConta() . "<br>";
+    echo "Saldo: " . $conta->getSaldo() . "<br>";
+   ?>
 </body>
 </html>
